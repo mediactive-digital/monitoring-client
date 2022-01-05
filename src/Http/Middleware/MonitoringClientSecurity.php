@@ -15,6 +15,7 @@ class MonitoringClientSecurity
         if (config('monitoring-client.enabled')) {
 
             $allowIps = config('monitoring-client.ip_filter');
+           
             if (empty($allowIps) || !in_array($_SERVER['REMOTE_ADDR'], $allowIps)) {
                 abort(403);
             }
