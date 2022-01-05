@@ -6,26 +6,31 @@ class MonitoringClient
 {
 
 
-    
+    /**
+     * Execute Check and return json formatted response
+     *
+     * @return void
+     */    
     public function get(){
-
-        //security passed, do the logic
-
         $health = self::check();
         return response()->json($health);
 
     }
 
 
-    // Build your next great package.
-
-    public static function check(){
+    /**
+     * Execute All Checks
+     *
+     * @return array
+     */
+    public static function check():array{
         
+        $health =[];
         $checkList = config('monitoring-client.checks');
         foreach( $checkList as $checkInfo ){
-
             $check = $checkInfo['check'];
-            ( new $check() )->setConfiguration( $checkInfo )->run();
+            $health[] =( new $check() )->setConfiguration( $checkInfo )->run();
         }
+        return $health;
     }
 }
