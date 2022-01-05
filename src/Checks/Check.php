@@ -10,6 +10,24 @@ abstract class Check
     const ALERT = 'ALERT';
     const FAILED = 'FAILED';
 
+    const TYPE_WORDPRESS = 'wordpress';
+    const TYPE_LARAVEL = 'laravel';
+    const TYPE_MEDIACTIVE = 'mediactive';
+
+    public static function identifyEnvironment(){
+        if( defined('WPINC') ){
+            return self::TYPE_WORDPRESS;
+        }
+        if( defined( 'APP_MODE') ){
+            return self::TYPE_MEDIACTIVE;
+        }
+        if( function_exists('config') ){
+            return self::TYPE_LARAVEL;
+        }
+        
+        return false;
+    }
+
     public function ok( $checkResult ){
         return [
             'name' => $this->getName(),
