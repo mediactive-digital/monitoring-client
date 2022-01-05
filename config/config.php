@@ -36,8 +36,8 @@ return [
     'checks' => [
         [
             'check'     => DiskUsageCheck::class,
-            'warnLevel'      => 70,
-            'alertLevel'     => 90
+            'warnLevel'      => DiskUsageCheck::DEFAULT_WARNLEVEL,
+            'alertLevel'     => DiskUsageCheck::DEFAULT_ALERTLEVEL
         ],
         [
             'check'     => SslVerificationCheck::class,
@@ -46,6 +46,11 @@ return [
         [
             'check'     => EnvironmentCheck::class,
             'should_be' => 'local'
+        ],
+        [
+            'check'     => RedisCheck::class,
+            'ip'        => RedisCheck::DEFAULT_REDIS_IP,
+            'port'      => RedisCheck::DEFAULT_REDIS_PORT,
         ]
     ]
         

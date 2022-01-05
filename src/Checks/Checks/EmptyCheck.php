@@ -6,7 +6,7 @@ use MediactiveDigital\MonitoringClient\Checks\Check;
 use Symfony\Component\Process\Process;
 
 
-class DiskUsageCheck extends Check
+class EmptyCheck extends Check
 {
 
     private $initialized = false;
