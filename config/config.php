@@ -18,6 +18,17 @@ return [
             'check'     => DiskUsageCheck::class,
             'warnLevel'      => 70,
             'alertLevel'     => 90
+        ],
+        'checks' => [
+            [
+                'check'     => DiskUsageCheck::class,
+                'warnLevel'      => 70,
+                'alertLevel'     => 90
+            ],
+            [
+                'check'     => SslVerificationCheck::class,
+                'domain' => 'https://mediactive-digital.com'
+            ]
         ]
         
     ]
