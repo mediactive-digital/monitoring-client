@@ -16,6 +16,10 @@ class DiskUsageCheck extends Check
     private $warnLevel = 70;
     private $alertLevel = 90;
 
+    public function getName():string{
+        return 'DiskUsage';
+    }
+    
     public function setConfiguration($configuration): Check
     {
 

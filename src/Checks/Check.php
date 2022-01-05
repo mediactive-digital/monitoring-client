@@ -4,6 +4,7 @@ namespace MediactiveDigital\MonitoringClient\Checks;
 
 abstract class Check
 {
+    
     const OK = 'OK';
     const WARN = 'WARNING';
     const ALERT = 'ALERT';
@@ -11,6 +12,7 @@ abstract class Check
 
     public function ok( $checkResult ){
         return [
+            'name' => $this->getName(),
             'status' => self::OK,
             'check' => $checkResult
         ];
@@ -18,6 +20,7 @@ abstract class Check
 
     public function warn( $checkResult ){
         return [
+            'name' => $this->getName(),
             'status' => self::WARN,
             'check' => $checkResult
         ];
@@ -25,6 +28,7 @@ abstract class Check
 
     public function alert( $checkResult ){
         return [
+            'name' => $this->getName(),
             'status' => self::ALERT,
             'check' => $checkResult
         ];
@@ -33,11 +37,12 @@ abstract class Check
     public function failed( string $reason ){
         return [
             'status' => self::FAILED,
+            'name' => $this->getName(),
             'reason' => $reason
         ];
     }
     abstract public function run();
     abstract public function setConfiguration( array $configuration ):Check;
-
+    abstract public function getName():string;
 }
 

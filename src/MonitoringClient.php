@@ -13,7 +13,7 @@ class MonitoringClient
      */    
     public function get(){
         $health = self::check();
-        return response()->json($health);
+        return response()->json($health);   
 
     }
 
@@ -26,11 +26,20 @@ class MonitoringClient
     public static function check():array{
         
         $health =[];
-        $checkList = config('monitoring-client.checks');
+        $config = self::getConfig();
+  
+        $checkList = $config['checks'];
         foreach( $checkList as $checkInfo ){
             $check = $checkInfo['check'];
             $health[] =( new $check() )->setConfiguration( $checkInfo )->run();
         }
         return $health;
+    }
+
+
+
+    private static function getConfig(){
+        //@todo Check si laravel ou non
+        return config('monitoring-client');
     }
 }
