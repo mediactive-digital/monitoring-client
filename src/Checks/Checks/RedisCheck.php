@@ -7,7 +7,7 @@ use MediactiveDigital\MonitoringClient\Checks\Check;
 
 class RedisCheck extends Check
 {
-    const DEFAULT_REDIS_URL = "127.0.0.1";
+    const DEFAULT_REDIS_IP = "127.0.0.1";
     const DEFAULT_REDIS_PORT = 6379;
     private $initialized = false;
 
@@ -20,7 +20,7 @@ class RedisCheck extends Check
     
     public function setConfiguration($configuration): Check
     {
-        $this->ip= isset( $configuration['ip'] ) ? $configuration['ip'] : self::DEFAULT_REDIS_URL;
+        $this->ip= isset( $configuration['ip'] ) ? $configuration['ip'] : self::DEFAULT_REDIS_IP;
         $this->port= isset( $configuration['port'] ) ? $configuration['port'] : self::DEFAULT_REDIS_PORT;
 
         $this->initialized = true;

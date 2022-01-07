@@ -6,6 +6,7 @@
 
 use MediactiveDigital\MonitoringClient\Checks\Checks\DiskUsageCheck;
 use MediactiveDigital\MonitoringClient\Checks\Checks\EnvironmentCheck;
+use MediactiveDigital\MonitoringClient\Checks\Checks\RedisCheck;
 use MediactiveDigital\MonitoringClient\Checks\Checks\SslVerificationCheck;
 
 
