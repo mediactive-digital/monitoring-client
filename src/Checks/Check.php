@@ -32,7 +32,7 @@ abstract class Check
         return [
             'name' => $this->getName(),
             'status' => self::OK,
-            'check' => $checkResult
+            'info' => $checkResult
         ];
     }
 
@@ -40,7 +40,7 @@ abstract class Check
         return [
             'name' => $this->getName(),
             'status' => self::WARN,
-            'check' => $checkResult
+            'info' => $checkResult
         ];
     }
 
@@ -48,7 +48,7 @@ abstract class Check
         return [
             'name' => $this->getName(),
             'status' => self::ALERT,
-            'check' => $checkResult
+            'info' => $checkResult
         ];
     }
 
@@ -56,7 +56,9 @@ abstract class Check
         return [
             'status' => self::FAILED,
             'name' => $this->getName(),
-            'reason' => $reason
+            'info' => [
+                'message' => $reason
+            ]
         ];
     }
     abstract public function run();
