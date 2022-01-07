@@ -48,7 +48,7 @@ class EmptyCheck extends Check
     private function formatResponse()
     {
         return [
-            
+            'message' => ''
         ];
     }
 }

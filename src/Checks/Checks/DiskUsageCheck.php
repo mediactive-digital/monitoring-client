@@ -73,7 +73,8 @@ class DiskUsageCheck extends Check
         return [
             'usage'     => $diskUsage,
             'warnLevel' => $this->warnLevel,
-            'alertLevel' => $this->alertLevel
+            'alertLevel' => $this->alertLevel,
+            'message' => "usage:".$diskUsage."% | warn>=".$this->warnLevel."% | alert>=".$this->alertLevel."%"
         ];
     }
 }

@@ -54,7 +54,7 @@ class RedisCheck extends Check
             return $this->alert($this->formatResponse($e->getMessage()) );
             // LOG that redis is down : $e->getMessage();
         }
-        return $this->ok($this->formatResponse());
+        return $this->ok($this->formatResponse('Ping Redis OK'));
         
     }
 

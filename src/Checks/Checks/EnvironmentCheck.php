@@ -99,7 +99,8 @@ class EnvironmentCheck extends Check
         return [
             'mode' => $currentMode,
             'should_be' => $this->env_should_be,
-            'debug' => $debugMode
+            'debug' => $debugMode,
+            'message' => "Attendu: ".$this->env_should_be." | Actuel: ".$currentMode." | debug: ".(string)$debugMode
         ];
     }
 

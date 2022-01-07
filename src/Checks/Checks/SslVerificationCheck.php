@@ -5,7 +5,7 @@ namespace MediactiveDigital\MonitoringClient\Checks\Checks;
 use Exception;
 use MediactiveDigital\MonitoringClient\Checks\Check;
 use Symfony\Component\Process\Process;
-
+use Carbon\Carbon;
 
 class SslVerificationCheck extends Check
 {
@@ -82,9 +82,11 @@ class SslVerificationCheck extends Check
 
     private function formatResponse( $expiryTsp )
     {
+        
         return [
             'expiry' => $expiryTsp,
-            'domain' => $this->domain
+            'domain' => $this->domain,
+            'message' => 'Expire le '.Carbon::createFromTimestamp( $expiryTsp )->toDateTimeString()
         ];
     }
 }
