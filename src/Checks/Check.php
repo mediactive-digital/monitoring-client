@@ -4,7 +4,7 @@ namespace MediactiveDigital\MonitoringClient\Checks;
 
 class Check
 {
-    
+    const MONITORING_CLIENT_VERSION = 'laravel-1.0';
     const OK = 'OK';
     const WARN = 'WARNING';
     const ALERT = 'ALERT';
@@ -30,6 +30,7 @@ class Check
 
     public function ok( $checkResult ){
         return [
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::OK,
             'info' => $checkResult
@@ -38,6 +39,7 @@ class Check
 
     public function warn( $checkResult ){
         return [
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::WARN,
             'info' => $checkResult
@@ -46,6 +48,7 @@ class Check
 
     public function alert( $checkResult ){
         return [
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::ALERT,
             'info' => $checkResult
@@ -54,6 +57,7 @@ class Check
 
     public function failed( string $reason ){
         return [
+            'version' => self::MONITORING_CLIENT_VERSION,
             'status' => self::FAILED,
             'name' => $this->getName(),
             'info' => [

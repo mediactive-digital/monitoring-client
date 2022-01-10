@@ -4,7 +4,8 @@ namespace MediactiveDigital\MonitoringClient\Standalone\Checks;
 
 class Check
 {
-    
+    const MONITORING_CLIENT_VERSION = "standalone-1.0";
+
     const OK = 'OK';
     const WARN = 'WARNING';
     const ALERT = 'ALERT';
@@ -18,6 +19,7 @@ class Check
 
     public function ok( $checkResult ){
         return array(
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::OK,
             'info' => $checkResult
@@ -26,6 +28,7 @@ class Check
 
     public function warn( $checkResult ){
         return array(
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::WARN,
             'info' => $checkResult
@@ -34,6 +37,7 @@ class Check
 
     public function alert( $checkResult ){
         return array(
+            'version' => self::MONITORING_CLIENT_VERSION,
             'name' => $this->getName(),
             'status' => self::ALERT,
             'info' => $checkResult
@@ -42,6 +46,7 @@ class Check
 
     public function failed( $reason ){
         return array(
+            'version' => self::MONITORING_CLIENT_VERSION,
             'status' => self::FAILED,
             'name' => $this->getName(),
             'info' => array(
