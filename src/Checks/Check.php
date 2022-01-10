@@ -2,7 +2,7 @@
 
 namespace MediactiveDigital\MonitoringClient\Checks;
 
-abstract class Check
+class Check
 {
     
     const OK = 'OK';

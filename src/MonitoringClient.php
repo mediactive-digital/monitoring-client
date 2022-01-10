@@ -2,8 +2,11 @@
 
 namespace MediactiveDigital\MonitoringClient;
 
+use MediactiveDigital\MonitoringClient\Checks\Check;
+
 class MonitoringClient
 {
+
 
 
     /**
@@ -12,10 +15,11 @@ class MonitoringClient
      * @return void
      */    
     public function get(){
-        $health = self::check();
-        return response()->json($health);   
 
-    }
+        $health = self::check();
+        return json_encode( $health );  //on fait un json_encode manuel volontairement, pour la compatibilité avec le non-laravel
+    }   
+    
 
 
     /**
@@ -23,14 +27,18 @@ class MonitoringClient
      *
      * @return array
      */
-    public static function check():array{
+    public static function check($config = null):array{
         
+
         $health =[];
-        $config = self::getConfig();
+        if( $config === null ){
+            $config = self::getConfig();
+        }
   
         $checkList = $config['checks'];
         foreach( $checkList as $checkInfo ){
             $check = $checkInfo['check'];
+            $checkInfo['environment'] = $config['environment'];
             $health[] =( new $check() )->setConfiguration( $checkInfo )->run();
         }
         return $health;

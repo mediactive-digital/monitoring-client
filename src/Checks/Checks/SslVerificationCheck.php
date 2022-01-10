@@ -35,7 +35,11 @@ class SslVerificationCheck extends Check
             try{
                 $original_parse = parse_url($this->domain, PHP_URL_HOST);
                 
-                $get = stream_context_create(array("ssl" => array("capture_peer_cert" => TRUE)));
+                $get = stream_context_create(array("ssl" => array(
+                    "capture_peer_cert" => TRUE,
+                    "verify_peer"=>false,
+                    "verify_peer_name"=>false
+                )));
                 $read = stream_socket_client(
                     "ssl://" . $original_parse . ":443",
                     $errno,

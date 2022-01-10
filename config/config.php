@@ -22,6 +22,10 @@ return [
      * ATTENTION : l'exclure du référencement dans le robot  (& htaccess ? )
      */
     'route' => '/health',
+    /**
+     * Type d'environnement : standalone, laravel, wordpress
+     */
+    'environment' => 'laravel',
 
     /**
      * Filtrage IP

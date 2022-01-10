@@ -3,7 +3,6 @@
 namespace MediactiveDigital\MonitoringClient\Checks\Checks;
 
 use MediactiveDigital\MonitoringClient\Checks\Check;
-use Symfony\Component\Process\Process;
 
 
 class EmptyCheck extends Check

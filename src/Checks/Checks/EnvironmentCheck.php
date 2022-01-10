@@ -9,7 +9,8 @@ class EnvironmentCheck extends Check
 
     private $initialized = false;
     private $env_should_be = 'UNKNOWN';
-
+    private $environment;
+    
     public function getName(): string
     {
         return 'Environment';
@@ -19,6 +20,8 @@ class EnvironmentCheck extends Check
     {
         $this->initialized = true;
         $this->env_should_be = isset($configuration['should_be']) ? $configuration['should_be'] : '';
+        $this->environment = isset($configuration['environment']) ? $configuration['environment'] : '';
+        var_dump( $th)
         return $this;
     }
 
@@ -35,8 +38,8 @@ class EnvironmentCheck extends Check
 
     private function test(): array
     {
-        $type = self::identifyEnvironment();
-        switch ($type) {
+       
+        switch ($this->environment) {
             case Check::TYPE_LARAVEL:
 
                 $currentMode = config('app.env');
