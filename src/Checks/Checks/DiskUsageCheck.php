@@ -13,8 +13,8 @@ class DiskUsageCheck extends Check
     const DEFAULT_ALERTLEVEL = 90;
 
     private $initialized = false;
-    private $warnLevel = 70;
-    private $alertLevel = 90;
+    private $warnLevel;
+    private $alertLevel;
 
     public function getName():string{
         return 'DiskUsage';
@@ -22,9 +22,8 @@ class DiskUsageCheck extends Check
     
     public function setConfiguration($configuration): Check
     {
-
-        $this->warnLevel = isset($configuration['warn']) ? $configuration['alert'] : self::DEFAULT_WARNLEVEL;
-        $this->alertLevel = isset($configuration['warn']) ? $configuration['alert'] : self::DEFAULT_ALERTLEVEL;
+        $this->warnLevel = isset($configuration['warnLevel']) ? $configuration['warnLevel'] : self::DEFAULT_WARNLEVEL;
+        $this->alertLevel = isset($configuration['alertLevel']) ? $configuration['alertLevel'] : self::DEFAULT_ALERTLEVEL;
         $this->initialized = true;
 
         return $this;
